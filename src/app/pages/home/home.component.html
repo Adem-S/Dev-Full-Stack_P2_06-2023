@@ -1,3 +1,35 @@
-<h2>Olympic games app</h2>
-<hr />
-<p>{{ (olympics$ | async)?.length }} data loaded</p>
+<ng-container *ngIf="olympics$ | async as olympics">
+  <div *ngIf="olympics.length > 0; else noOlympics">
+    <app-header
+      title="Medals per Country"
+      [headerDetails]="headerDetails"
+    ></app-header>
+    <div class="home-content">
+      <ngx-charts-pie-chart
+        [results]="medalList"
+        [gradient]="true"
+        [labels]="true"
+        [trimLabels]="false"
+        (select)="onSelectCountry($event)"
+      >
+        <ng-template #tooltipTemplate let-model="model">
+          <div class="home-tooltip">
+            <p>{{ model.name }}</p>
+            <div>
+              <img src="../../../assets/img/medal_icon.svg" alt="medal" />
+              <p>{{ model.value }}</p>
+            </div>
+          </div>
+        </ng-template>
+      </ngx-charts-pie-chart>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #noOlympics>
+  <div class="error-message">
+    <h3>No olympics found</h3>
+  </div>
+</ng-template>
+
+<app-spinner *ngIf="loading$ | async"></app-spinner>

@@ -1,0 +1,38 @@
+app-country {
+  display: block;
+  height: 100vh;
+}
+
+.country-content {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.country-tooltip {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+  div {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+  }
+  img {
+    width: 1em;
+    height: 1em;
+  }
+}
+
+.back-button {
+  color: #04838f;
+  position: absolute;
+  top: 0;
+  margin: 30px;
+  @media screen and (max-width: 480px) {
+    margin: 15px;
+    font-size: 12px;
+  }
+}

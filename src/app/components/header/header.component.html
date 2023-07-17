@@ -1,0 +1,9 @@
+<div *ngIf="headerDetails" class="header">
+  <h1>{{ title }}</h1>
+  <ul class="sub-header">
+    <li *ngFor="let detail of headerDetails">
+      <h3>{{ detail.key }}</h3>
+      <p>{{ detail.value }}</p>
+    </li>
+  </ul>
+</div>

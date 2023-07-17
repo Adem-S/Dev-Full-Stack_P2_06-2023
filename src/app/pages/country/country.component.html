@@ -1,0 +1,48 @@
+<div *ngIf="olympic$ | async as olympic; else olympicDoesntExist">
+  <app-header
+    [title]="olympic.country"
+    [headerDetails]="headerDetails"
+  ></app-header>
+
+  <div class="country-content">
+    <ngx-charts-line-chart
+      [showXAxisLabel]="true"
+      [xAxis]="true"
+      [yAxis]="true"
+      xAxisLabel="Dates"
+      [results]="medalsByOlympic"
+      [autoScale]="true"
+      [roundDomains]="true"
+      [yAxisTickFormatting]="formatValue"
+    >
+      <ng-template #tooltipTemplate let-model="model">
+        <div class="country-tooltip">
+          <p>{{ model.name }}</p>
+          <div>
+            <img src="../../../assets/img/medal_icon.svg" alt="medal" />
+            <p>{{ model.value }}</p>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template #seriesTooltipTemplate let-model="model">
+        <div class="country-tooltip">
+          <div>
+            <img src="../../../assets/img/medal_icon.svg" alt="medal" />
+            <p>{{ model[0].value }}</p>
+          </div>
+        </div>
+      </ng-template>
+    </ngx-charts-line-chart>
+  </div>
+
+  <a class="back-button" routerLink="">Go back</a>
+</div>
+
+<ng-template #olympicDoesntExist>
+  <div class="error-message">
+    <h3>No country found</h3>
+    <a routerLink="" class="back-button">Go back</a>
+  </div>
+</ng-template>
+
+<app-spinner *ngIf="loading$ | async"></app-spinner>

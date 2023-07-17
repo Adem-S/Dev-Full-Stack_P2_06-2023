@@ -1,0 +1,17 @@
+.home-tooltip {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  padding: 5px;
+  font-size: 1em;
+  div {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+  }
+  img {
+    width: 1em;
+    height: 1em;
+  }
+}
