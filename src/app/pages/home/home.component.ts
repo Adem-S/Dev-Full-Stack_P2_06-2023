@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { Observable, tap } from "rxjs";
+import { Observable, takeUntil, tap } from "rxjs";
 import { HeaderDetails } from "src/app/core/models/HeaderDetails";
 import { Olympic } from "src/app/core/models/Olympic";
 import { OlymicMedals } from "src/app/core/models/OlymicMedals";
@@ -34,14 +34,14 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  setHeaderDetails(olympic: Olympic[]) {
+  setHeaderDetails(olympic: Olympic[]): void {
     this.headerDetails = [
       { key: "Number of JOS", value: olympic[0].participations.length },
       { key: "Number of countries", value: olympic.length },
     ];
   }
 
-  setMedalsForPieChart(medals: OlymicMedals[]) {
+  setMedalsForPieChart(medals: OlymicMedals[]): void {
     this.medalList = medals.map((medal) => {
       return { name: medal.name, value: medal.value, extra: { id: medal.id } };
     });

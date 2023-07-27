@@ -34,7 +34,7 @@ export class CountryComponent implements OnInit {
     );
   }
 
-  setHeaderDetails(olympic: Olympic | undefined) {
+  setHeaderDetails(olympic: Olympic | undefined): void {
     if (olympic) {
       let medals = this.olympicService.getMedalsCount([olympic])?.[0];
       let athletes = this.olympicService.getAthletesCount([olympic])?.[0];
@@ -52,7 +52,7 @@ export class CountryComponent implements OnInit {
     }
   }
 
-  setMedalsByOlympic(olympic: Olympic | undefined) {
+  setMedalsByOlympic(olympic: Olympic | undefined): void {
     if (olympic) {
       this.medalsByOlympic = [
         {
@@ -68,7 +68,7 @@ export class CountryComponent implements OnInit {
     }
   }
 
-  formatValue(val: number) {
+  formatValue(val: number): number {
     return val % 1 === 0 ? val : 0;
   }
 }
